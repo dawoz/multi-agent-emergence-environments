@@ -13,6 +13,50 @@ pip install -e multi-agent-emergence-environments/
 
 This repository has been tested only on Mac OS X and Ubuntu 16.04 with Python 3.6
 
+#### **Notes on installation**
+
+Here are the extra steps I roughly followed to install the repository.
+
+As mentioned, the repository (as well as `mujoco-py` and `mujoco-worldgen`) is tested only on Ubuntu 16.04 and Mac OS X. That said, I tried installing `mujoco-py`, `mujoco-worldgen`, `multi-agent-emergence-enviromnents` on
+
+- Windows 10: `mujoco-py` fails to load the XML file of the environment. Probably a solvable bug, but be prepared to spend a good amount of time trying;
+- Manjaro 21.1.6 on VirtualBox 6.1 (Windows host): didn't spend much time on it, as the C libraries were in conflict;
+- Ubuntu 16.04 on VirtualBox 6.1 (Windows host): everything seemed fine, util I couldn't run MuJoCo because the guest OS couldn't have access to AVX and AVX2 CPU instructions.
+
+Therefore, **strictly** follow the repository instructions when installing.
+
+#### **Extra dependencies and steps I followed**
+
+**System and Python version**: Ubuntu 16.04 LTS; Python 3.6.13 (with Anaconda).
+
+Extra dependencies:
+
+```bash
+sudo apt install libosmesa6-dev libgl1-mesa-glx libglfw3 libgl1-mesa-dev patchelf libopenmpi-dev
+```
+
+Then install `mujoco-py`, `mujoco-worldgen` and `multi-agent-emergence-environment`.
+
+```bash
+pip install multi-agent-emergence-environments/requirements_ma_policy.txt
+```
+
+### Bug when executing `python bin/examine.py base`
+
+See commit in this repository or replace in line 41 in `bin/examine.py`
+
+```python
+envs_dir = 'mae_envs/envs',
+xmls_dir = 'xmls',
+```
+
+with
+
+```python
+envs_dir = 'mae_envs/envs'
+xmls_dir = 'xmls'
+```
+
 ### Use
 
 Environment construction works in the following way: You start from the `Base` environment (defined in `mae_envs/envs/base.py`) and then you add environment modules (e.g. `Boxes`, `Ramps`, `RandomWalls`, etc.) and then wrappers on top. You can see examples in the `mae_envs/envs` folder.
