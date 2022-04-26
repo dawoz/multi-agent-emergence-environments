@@ -13,6 +13,8 @@ pip install -e multi-agent-emergence-environments/
 
 This repository has been tested only on Mac OS X and Ubuntu 16.04 with Python 3.6
 
+---
+
 #### **Notes on installation**
 
 Here are the extra steps I roughly followed to install the repository.
@@ -38,8 +40,10 @@ sudo apt install libosmesa6-dev libgl1-mesa-glx libglfw3 libgl1-mesa-dev patchel
 Then install `mujoco-py`, `mujoco-worldgen` and `multi-agent-emergence-environment`.
 
 ```bash
-pip install multi-agent-emergence-environments/requirements_ma_policy.txt
+pip install -r multi-agent-emergence-environments/requirements_ma_policy.txt
 ```
+
+---
 
 ### Bug when executing `python bin/examine.py base`
 
